@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Event Handling Pairs</title>
+        <style type="text/css">
+            h1 {
+                font-size: 2.25em;
+                font-family: sans-serif;
+                font-weight: 300;
+                line-height: 4.5em;
+                color: #777;
+                text-align: center;
+            }
+            div {
+                display: grid;
+                grid-template-columns: auto auto auto auto auto auto auto auto auto auto;
+                justify-content: space-evenly;
+            }
+            button {
+                display: inline-block;
+                font-size: 1.2em;
+                font-family: sans-serif;
+                font-weight: 300;
+                padding: 10px 22px;
+                background: #fff;
+                color: #777;
+                border: 1px solid #444;
+                border-radius: 6px;
+                transition: all 0.3s ease-in-out 0s;
+            }
+            .green-background {
+                background: green;
+                color: #fff;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Each Pair Will Simultaneously Change Colors</h1>
+        <div>
+            <button class="thing1" type="button">Pair1</button>
+            <button class="thing2" type="button">Pair2</button>
+            <button class="thing3" type="button">Pair3</button>
+            <button class="thing4" type="button">Pair4</button>
+            <button class="thing5" type="button">Pair5</button>
+            <button class="thing1" type="button">Pair1</button>
+            <button class="thing2" type="button">Pair2</button>
+            <button class="thing3" type="button">Pair3</button>
+            <button class="thing4" type="button">Pair4</button>
+            <button class="thing5" type="button">Pair5</button>
+            <p>test</p>
+        </div>
+        <script type="text/javascript">
+            (function () {
+                let btns = document.getElementsByTagName('button');
+                for (let btn of btns) {
+                    btn.addEventListener('click', function(e) {
+                        let currentActiveItems = document.querySelectorAll('.green-background');
+                        let newActiveItem = document.getElementsByClassName(e.target.classList[0])[1];
+                        for (let item of currentActiveItems) {
+                            item.classList.remove('green-background');
+                        }
+                        newActiveItem.classList.add('green-background');
+                    });
+                }
+            })();
+        </script>
+    </body>
+</html>
